@@ -4,15 +4,17 @@ const connection = require('../database/connection');
 const DB_NAME = 'ongs';
 
 module.exports = {
-	async create({ name, email, whatsapp, city, uf }) {
+	async create(request, response) {
 		const id = crypto.randomBytes(4).toString('HEX');
+		const { name, email, whatsapp, city, uf } = request.body;
 
 		await connection(DB_NAME).insert({ id, name, email, whatsapp, city, uf });
 
-		return id;
+		return response.json({ id });
 	},
 
-	async list() {
-		return await connection(DB_NAME).select('*');
+	async index(request, response) {
+		const ongs = await connection(DB_NAME).select('*');
+		return response.json(ongs);
 	}
 };

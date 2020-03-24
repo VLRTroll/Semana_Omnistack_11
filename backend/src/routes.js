@@ -1,14 +1,13 @@
 const express = require('express');
 const OngController = require('./controllers/OngController');
+const IncidentController = require('./controllers/IncidentController');
 
 const routes = express.Router();
 
-routes.get('/ongs', async (request, response) => {
-	return response.json(await OngController.list());
-});
+routes.get('/ongs', OngController.index);
+routes.post('/ongs', OngController.create);
 
-routes.post('/ongs', async (request, response) => {
-	return response.json({ id: await OngController.create(request.body) });
-});
-
+routes.get('/incidents', IncidentController.index);
+routes.post('/incidents', IncidentController.create);
+routes.delete('/incidents/:id', IncidentController.delete);
 module.exports = routes;
