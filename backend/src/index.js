@@ -1,12 +1,10 @@
 const express = require('express');
+const routes = require('./routes');
 
 const app = express();
 
 //informa que o corpo das requisições devem ser parseados para JSON
 app.use(express.json());
-
-app.get('/', (request, response) => {
-	return response.json({ message: 'Hello World' });
-});
+app.use(routes);
 
 app.listen(3333);
