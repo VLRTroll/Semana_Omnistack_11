@@ -18,7 +18,25 @@ module.exports = {
 	},
 
 	async index(request, response) {
-		const incidents = await connection(DB_NAME).select('*');
+		const PAGE_SIZE = 5;
+		const { pages = 1 } = request.query;
+
+		const [{ count }] = await connection(DB_NAME).count('id', { as: 'count' });
+
+		const incidents = await connection(DB_NAME)
+			.select([
+				'incidents.*',
+				'ongs.name',
+				'ongs.email',
+				'ongs.whatsapp',
+				'ongs.city',
+				'ongs.uf'
+			])
+			.join('ongs', 'ongs.id', '=', 'incidents.ong_id')
+			.offset((pages - 1) * 5)
+			.limit(PAGE_SIZE);
+
+		response.header('X-Total-Count', count);
 		return response.json(incidents);
 	},
 
