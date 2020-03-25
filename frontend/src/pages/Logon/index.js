@@ -4,6 +4,7 @@ import { FiLogIn } from 'react-icons/fi';
 import './styles.css';
 import logoImg from '../../assets/logo.svg';
 import heroesImg from '../../assets/heroes.png';
+import LinkWrapper from '../../wrappers/LinkWrapper';
 
 export default function Logon() {
 	return (
@@ -19,10 +20,10 @@ export default function Logon() {
 						Entrar
 					</button>
 
-					<a href='/registros'>
+					<LinkWrapper className='text-link' to='/register'>
 						<FiLogIn size={16} color='#E02041' />
 						Não tenho cadastro
-					</a>
+					</LinkWrapper>
 				</form>
 			</section>
 
