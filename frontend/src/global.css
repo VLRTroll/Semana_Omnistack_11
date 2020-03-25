@@ -39,6 +39,20 @@ form input {
 	color: #333;
 }
 
+form textarea {
+	height: 60px;
+	min-height: 140px;
+	width: 100%;
+
+	border: 1px solid #dcdce6;
+	border-radius: 8px;
+	padding: 16px 24px;
+
+	color: #333;
+	line-height: 24px;
+	resize: vertical;
+}
+
 .button {
 	display: inline-block;
 	height: 60px;
