@@ -8,9 +8,11 @@ import api from "../../services/api";
 import { useHistory } from "react-router-dom";
 
 export default function Profile() {
+  const history = useHistory();
   const ongId = localStorage.getItem("ongId");
   const ongName = localStorage.getItem("ongName");
-  const history = useHistory();
+  const locale =
+    navigator.languages?.[0] || navigator.userLanguage || navigator.language;
 
   const [incidents, setIncidents] = useState([]);
 
@@ -60,7 +62,7 @@ export default function Profile() {
 
             <strong>VALOR:</strong>
             <p>
-              {Intl.NumberFormat("pt-BR", {
+              {Intl.NumberFormat(locale, {
                 style: "currency",
                 currency: "BRL"
               }).format(incident.value)}
