@@ -66,7 +66,7 @@ export default StyleSheet.create({
     fontSize: 15
   },
 
-  deatailsButton: {
+  detailsButton: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
