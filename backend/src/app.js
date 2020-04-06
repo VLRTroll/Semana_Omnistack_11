@@ -10,4 +10,5 @@ app.use(express.json()); //informa que o corpo das requisições devem ser parse
 app.use(routes); //inclui as rotas da nossa aplicação
 app.use(errors());
 
-app.listen(3333);
+// app.listen(3333);
+module.exports = app;
